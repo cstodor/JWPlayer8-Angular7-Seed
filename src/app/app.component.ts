@@ -8,10 +8,6 @@ declare var jwplayer: any;
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
-
-  }
-
   ngOnInit() {
     this.addScript().then(() => {
 
@@ -20,10 +16,28 @@ export class AppComponent implements OnInit {
       // Initialize JW Player
       player.setup({
         'title': 'Big Buck Bunny',
-        'file': 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-        'image': 'assets/img/bg.jpg',
-        'height': 360,
-        'width': 640
+        'playlist': [
+          {
+            'file': 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
+            'image': 'assets/img/bg.jpg',
+            'sources': [
+              {
+                'default': false,
+                'type': 'hls',
+                'label': '0',
+                'preload': 'none',
+                'repeat': false,
+                'autostart': 'viewable',
+                'mute': false,
+                'volume': 25
+              }
+            ]
+          }
+        ],
+        primary: 'html5',
+        hlshtml: false,
+        height: 300,
+        width: '100%'
       });
 
       // Before Play
@@ -35,6 +49,7 @@ export class AppComponent implements OnInit {
         // Play
         player.play();
       });
+
     });
 
   }
