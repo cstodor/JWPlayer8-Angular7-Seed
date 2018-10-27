@@ -1,0 +1,1 @@
+export const JW_PLAYER_KEY = 'YOUR_JW_PLAYER_KEY';
